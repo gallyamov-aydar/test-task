@@ -1,0 +1,22 @@
+<section id="row">
+	<div class="col col-left">
+		<%= form_for @query, url: {action: "create"}, remote: true do |f| %>
+			<p>
+				<%= f.text_field :text, :id => "text", :placeholder => "Введите текст запроса" %>
+			</p>
+
+			<p>
+				<%= f.submit "Отправить", :id => "submit_button" %>
+			</p>
+		<% end %>
+	</div>
+	<div class="col col-right">
+		<h2 id="query-counter"><%= @queries.length %></h2>
+		<div id="queries">
+			<% @queries.each do |query| %>
+					<b><%= query.text %></b>
+					<p><%= query.created_at.localtime.strftime '%H:%M:%S' %></p>
+			<% end %>
+		</div>
+	</div>
+</section>
